@@ -1,0 +1,52 @@
+﻿@model Project
+
+@{
+    ViewData["Title"] = "Project Details";
+}
+
+<p class="h1 text-center text-dark">Project Details</p>
+<hr />
+
+<div class="row">
+    <div class="col-md-8 offset-4">
+        <form class="col-6">
+            <div class="form-group">
+                <label class="control-label">Project Name</label>
+                <input asp-for="@Model.ProjectName" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Client</label>
+                <input asp-for="@Model.Client.CompanyName" class="form-control" readonly="readonly" />
+            </div>
+            <p><b>Employees Assigned</b></p>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Employee Email</th>
+                    <th scope="col">Employee Mobile Phone</th>
+                </tr>
+                </thead>
+                @foreach (var emp in Model.EmployeeProjects)
+                {
+                    <tr>
+                        <td>@emp.Employee.EmployeeFullName</td>
+                        <td>@emp.Employee.EmployeeEmail</td>
+                        <td>@emp.Employee.EmployeeMobilePhone</td>
+                    </tr>
+                }
+            </table>
+            <div class="form-group">
+                <label class="control-label">Start Date</label>
+                <input asp-for="@Model.StartDate" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">End Date</label>
+                <input asp-for="@Model.EndDate" class="form-control" readonly="readonly" />
+            </div>
+        </form>
+        <div class="form-group">
+            <a class="btn btn-info" asp-action="Index">Back</a>
+        </div>
+    </div>
+</div>

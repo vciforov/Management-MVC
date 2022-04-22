@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Project>
+
+@{
+
+    ViewData["Title"] = "Projects";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="col-2 align-self-end ml-auto">
+            <a class="nav-link text-white btn btn-primary" asp-controller="Projects" asp-action="Create">Add New</a> &nbsp;
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model=>model.ProjectName)</th>
+                <th>@Html.DisplayNameFor(model=>model.StartDate)</th>
+                <th>@Html.DisplayNameFor(model=>model.EndDate)</th>
+                <th class="text-center">Manage</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="align-middle">@Html.DisplayFor(modelItem=>item.ProjectName)</td>
+                    <td class="align-middle">@Html.DisplayFor(modelItem=>item.StartDate)</td>
+                    <td class="align-middle">@Html.DisplayFor(modelItem=>item.EndDate)</td>
+                    <td class="form-group text-center">
+                        <a class="btn btn-success text-white" asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> &nbsp;
+                        <a class="btn btn-primary text-white" asp-action="Details" asp-route-id="@item.ProjectId">Details</a>
+                    </td>
+                </tr>
+
+            }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

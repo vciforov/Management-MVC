@@ -1,0 +1,36 @@
+﻿@model Client
+
+
+@{
+
+    ViewData["Title"] = "Delete Client";
+}
+
+<p class="h1 text-center text-dark">Delete Client</p>
+<hr />
+<div class="row">
+    <div class="col-sm-8 offset-4">
+        <form class="col-6">
+            <div class="form-group ">
+                <label asp-for="CompanyName" class="control-label"></label>
+                <input asp-for="CompanyName" class="form-control" readonly="readonly" />
+                <span asp-validation="EmployeeFullName" clas="text-danger"></span>
+            </div>
+
+            <div class="form-group ">
+                <label asp-for="CompanyEmail" class="control-label"></label>
+                <input asp-for="CompanyEmail" class="form-control" readonly="readonly" />
+                <span asp-validation="EmployeeEmail" clas="text-danger"></span>
+            </div>
+
+            <div class="form-group ">
+                <form asp-action="DeleteConfirm">
+                    <input type="hidden" asp-for="ClientId" />
+                    <input type="submit" value="Remove" class="btn btn-danger float-right" />
+                </form>
+
+                <a class="btn btn-info" asp-action="Index">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

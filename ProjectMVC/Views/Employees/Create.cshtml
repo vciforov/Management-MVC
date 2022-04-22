@@ -1,0 +1,45 @@
+﻿@using ProjectMVC.Data.Enums
+@model Employee
+
+
+@{
+
+    ViewData["Title"] = "Add New Employee";
+}
+
+<p class="h1 text-center text-dark">New Employee</p>
+<hr />
+<div class="row">
+    <div class="col-sm-8 offset-4">
+        <form asp-action="Create" class="col-6">
+            <div asp-validation-summary="ModelOnly" clas="text-danger"></div>
+            <div class="form-group ">
+                <label asp-for="EmployeeFullName" class="control-label"></label>
+                <input asp-for="EmployeeFullName" class="form-control" />
+                <span asp-validation="EmployeeFullName" clas="text-danger"></span>
+            </div>
+
+            <div class="form-group ">
+                <label asp-for="EmployeeEmail" class="control-label"></label>
+                <input asp-for="EmployeeEmail" class="form-control" />
+                <span asp-validation="EmployeeEmail" clas="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeMobilePhone" class="control-label"></label>
+                <input asp-for="EmployeeMobilePhone" class="form-control" />
+                <span asp-validation="EmployeeMobilePhone" clas="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label asp-for="DepartmentNumber" class="control-label"></label>
+                <select asp-for="DepartmentNumber" class="form-control" asp-items="Html.GetEnumSelectList<DepartmentNumber>()"></select>
+                <span asp-validation="DepartmentNumber" clas="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <input type="submit" value="Create" class="btn btn-primary float-right" />
+                <a class="btn btn-info" asp-action="Index">Back</a>
+            </div>
+
+
+        </form>
+    </div>
+</div>

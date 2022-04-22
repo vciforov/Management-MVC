@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Client>
+
+@{
+
+    ViewData["Title"] = "Clients";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="col-2 align-self-end ml-auto">
+            <a class="nav-link text-white btn btn-primary" asp-controller="Clients" asp-action="Create">Add New</a> &nbsp;
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model=>model.CompanyName)</th>
+                    <th>@Html.DisplayNameFor(model=>model.CompanyEmail)</th>
+                    <th class="text-center">Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">@Html.DisplayFor(modelItem=>item.CompanyName)</td>
+                        <td class="align-middle">@Html.DisplayFor(modelItem=>item.CompanyEmail)</td>
+                        <td class="form-group text-center">
+                            <a class="btn btn-success text-white" asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> &nbsp;
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
